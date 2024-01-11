@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "4b0862a1-6106-477b-ad4b-9acbdc2875fb",
+  "id": "3c001dab-166b-4dbe-a528-e79c8d93635b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "habit_events": {
@@ -13,6 +13,13 @@
           "primaryKey": true,
           "notNull": true,
           "autoincrement": true
+        },
+        "uid": {
+          "name": "uid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         },
         "habit_id": {
           "name": "habit_id",
@@ -45,7 +52,15 @@
           "default": "CURRENT_TIMESTAMP"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "habit_events_uid_unique": {
+          "name": "habit_events_uid_unique",
+          "columns": [
+            "uid"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {
         "habit_events_habit_id_habits_id_fk": {
           "name": "habit_events_habit_id_habits_id_fk",
@@ -73,6 +88,13 @@
           "primaryKey": true,
           "notNull": true,
           "autoincrement": true
+        },
+        "uid": {
+          "name": "uid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -121,7 +143,15 @@
           "default": "NULL"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "habits_uid_unique": {
+          "name": "habits_uid_unique",
+          "columns": [
+            "uid"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {
         "habits_user_id_users_id_fk": {
           "name": "habits_user_id_users_id_fk",
@@ -149,6 +179,13 @@
           "primaryKey": true,
           "notNull": true,
           "autoincrement": true
+        },
+        "uid": {
+          "name": "uid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -182,7 +219,15 @@
           "default": "NULL"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "users_uid_unique": {
+          "name": "users_uid_unique",
+          "columns": [
+            "uid"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
