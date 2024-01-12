@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "96725090-4107-458a-8ece-19c636fe76ca",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "dd0643f7-4b8f-4278-8617-be8b0ea18f9a",
+  "prevId": "96725090-4107-458a-8ece-19c636fe76ca",
   "tables": {
     "habit_events": {
       "name": "habit_events",
@@ -28,8 +28,8 @@
           "notNull": true,
           "autoincrement": false
         },
-        "event": {
-          "name": "event",
+        "type": {
+          "name": "type",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
@@ -237,6 +237,8 @@
   "_meta": {
     "schemas": {},
     "tables": {},
-    "columns": {}
+    "columns": {
+      "\"habit_events\".\"event\"": "\"habit_events\".\"type\""
+    }
   }
 }

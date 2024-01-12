@@ -1,0 +1,1 @@
+ALTER TABLE `habits` RENAME COLUMN `name` TO `title`;

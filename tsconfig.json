@@ -10,6 +10,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"moduleResolution": "bundler",
+		"noErrorTruncation": true,
 		"include": ["src", "db"]
 	}
 }

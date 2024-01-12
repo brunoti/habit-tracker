@@ -1,4 +1,4 @@
-import { type ApiType } from '$lib/api'
+import type { ApiType } from '$lib/api/types'
 import { hc } from 'hono/client'
 
 let browserClient: ReturnType<typeof hc<ApiType>>

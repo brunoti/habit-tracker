@@ -1,0 +1,1 @@
+ALTER TABLE `habit_events` RENAME COLUMN `event` TO `type`;

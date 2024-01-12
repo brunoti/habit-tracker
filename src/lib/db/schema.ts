@@ -1,5 +1,5 @@
 import { createId } from '@paralleldrive/cuid2'
-import { sql } from 'drizzle-orm'
+import { relations, sql } from 'drizzle-orm'
 import { text, integer, sqliteTable as table } from 'drizzle-orm/sqlite-core'
 
 const uid = () => text('uid').notNull().unique()
@@ -29,7 +29,7 @@ export const habits = table('habits', {
 		.notNull()
 		.$defaultFn(() => createId())
 		.unique(),
-	title: text('name').notNull(),
+	title: text('title').notNull(),
 	userId: integer('user_id')
 		.notNull()
 		.references(() => users.id),
@@ -40,14 +40,25 @@ export const habits = table('habits', {
 	...timestamps({ withDeletedAt: true }),
 })
 
+export const habitRelations = relations(habits, ({ many }) => ({
+	events: many(habitEvents),
+}))
+
 export const habitEvents = table('habit_events', {
 	id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 	uid: uid().$defaultFn(() => createId()),
 	habitId: integer('habit_id')
 		.notNull()
 		.references(() => habits.id),
-	event: text('event', {
+	type: text('type', {
 		enum: ['completed', 'skipped'],
 	}).notNull(),
 	...timestamps(),
 })
+
+export const habitEventsRelations = relations(habitEvents, ({ one }) => ({
+	habit: one(habits, {
+		fields: [habitEvents.habitId],
+		references: [habits.id],
+	}),
+}))
